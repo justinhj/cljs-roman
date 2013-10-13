@@ -1,7 +1,6 @@
 (defproject roman "0.1.0-SNAPSHOT"
   :description "Convert numbers to and from Roman numerals"
   :dependencies [[org.clojure/clojure "1.5.0"]
-                 [crate "0.2.4"]
                  [prismatic/dommy "0.1.2"]]
   :plugins [[lein-cljsbuild "0.3.0"]]
   :cljsbuild {
