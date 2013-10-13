@@ -16,7 +16,7 @@ Having installed Leiningen I created a new project with 'lein new roman'
 
 I then edited the project.clj to add the dependencies I needed and especially to set up lein-cljsbuild which enables you to build cljs code easily.
 
-The html is in index.html and the javascript is compiled into the javascripts folder from the Clojurescript.
+The html is in roman.html and the javascript is compiled into the javascripts folder from the Clojurescript in the src/cljs folder.
 
 I had a terminal with the comman 'lein cljsbuild auto' running, so that any changes to the cljs files are compiled to javascript. 
 
