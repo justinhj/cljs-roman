@@ -14,15 +14,18 @@
 ;; convert a string of roman numerals into a number
 
 (def vm {\I 1, \V 5,\X 10,\L 50,\C 100,\D 500,\M 1000})
- 
-(defn roman-numerals-to-decimal [str]
-  (reduce (fn [sum [a b]]
-            (let [x (if (>= a b) 0 (* 2 (- b)))]
-              (+ sum a x)))
-          0 (partition 2 1 '(0) (map vm str))))
 
-;; write roman numerals
-;; http://www.4clojure.com/problem/104
+(defn roman-numerals-to-decimal[str]
+  (let [vm {\I 1, \V 5,\X 10,\L 50,\C 100,\D 500,\M 1000}]
+    (reduce #(if (>= (first %2) (second %2))
+               (+ %1 (first %2))
+               (+ %1
+                  (- (second %2) (first %2)) (- (second %2))
+                  )
+               )
+            0
+            (partition 2 1 '(0)
+                       (map #(get vm %) str)))))
 
 (defn decimal-to-roman-numerals[num]
   (let [svm (into (sorted-map-by >) {1000 "M", 500 "D", 350 "LC", 100 "C", 50 "L", 40 "XL", 10 "X", 5 "V", 4 "IV", 1 "I", 9 "IX", 900 "CM", 90 "XC"})]
